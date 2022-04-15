@@ -97,6 +97,19 @@ mvn test === mvn surefire:test
 If it is standalone java project, maven will be associated with jar:jar; if it is web project then maven dunamically associated with war:war goal
 
 
+Maven Lifecycle:
+clean
+validate
+compile
+test
+package
+verify
+install
+site
+deploy
+
+
+
 groupId:artifactId:packaging:version: uniquely identified where we can find an artifact in maven repository
 groupId: java package, it is the reverse the url of company like org.oracle. Cna incl sub package
 artifactId; artifact name (this will be the jar name ete)
@@ -244,6 +257,120 @@ under <dependencyManagement>
 
 
 similar to the <dependencyManagement>, we have option for plugin management. This help us with the consistency of the plugin we used.
+
+
+Profiles:
+
+
+/dev/application.properties
+/test/application.properties
+/qa/application.properties
+/prod/application.properties
+
+```
+    <profile>
+        <id>dev</id>
+        <properties>
+            <build.profile.id>dev</build.profile.id>
+        </properties>
+        <build>
+            <resources>
+                <resource>
+                    <directory>src/main/profiles/dev</directory>
+                </resource>
+            </resources>
+        </build>
+    </profile>
+
+```
+
+mvn install -p dev //-p is profile and activating dev profile
+
+so only dev file and details will be added in JAR
+
+jcoco code coverage:
+
+1. Need to add jcoco plugin in pom
+
+```
+
+    <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.7</version>
+    </plugin>
+
+```
+2. Initialize the jcoco plugin
+3. set up the goal
+```
+    <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.7</version>
+        <executions>
+            <!-- Initialize the jcoco plugin -->
+            <execution>
+                <goals>
+                    <goal>prepare-agent</goal>
+                </goals>
+            </execution>
+            <!-- means mvn test will kick off this 'report' goal -->
+            <execution>
+                <id>report</id>
+                <phase>test</phase>
+                <goals>
+                    <goal>report</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+
+```
+3. Run the goal
+
+mvn clean test
+mvn clean verify //verify runs and check the result of test  
+
+report will be there under target/site/jcoco
+
+
+Sonarqube is static code analysis tool
+
+
+
+1. Install sonar 
+    a. download from internet (free edition)
+    b. unzip
+    c. run StartSonar.bat
+    d. http://localhost:9000/ (admin/admin) [i changes it to admin/password]
+    
+2. RUn sonar locally
+3. add settings.xml under .m2
+```
+<settings>
+    <pluginGroups>
+        <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+    </pluginGroups>
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+     </profiles>
+</settings>
+
+```
+4. run mvn clean verify sonar:sonar
+5. We will get  Connection refused error
+6. login into sonar http://localhost:9000/
+7. Click on "A" i.e. Administrator -> Security -> Token -> copy the token
+8. run mvn clean verify sonar:sonar -Dsonar.login=75910d3ec08e73bef04aa41863b934ba9ca7119e
+9. This will now analyse and send the report to sonar
+
+
 
 
 
