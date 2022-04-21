@@ -1,5 +1,5 @@
 # MAVEN
-
+[Repository_Managers](Repository_Managers.md)
 Standalone java app: JAR fine
 Web app: WAR fine
 But as we know is we use thymeleaf, it does use JAR file, even if it is a web application. It uses HTML, and all the tags Spring internally handle.
@@ -372,7 +372,7 @@ Sonarqube is static code analysis tool
 
 
 
-
+[Repository_Managers](Repository_Managers.md)
 
 
 
