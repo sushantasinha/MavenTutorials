@@ -131,9 +131,24 @@
             </build>
         </profile>-->
 
-
-
     </profiles>
+
+    <!--<repositories>
+        <repository>
+            <id>maven-group-repo</id>
+            <url>http://localhost:8081/repository/maven-group-repo/</url>
+        </repository>
+    </repositories>-->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id> <!-- any unique id we can use -->
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
 
 
 </project>
