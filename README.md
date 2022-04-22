@@ -373,6 +373,10 @@ Sonarqube is static code analysis tool
 
 [Repository_Managers](Repository_Manager.md)
 
+[PLugins](Plugins.md)
+
+
+
 
 
 
