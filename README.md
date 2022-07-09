@@ -1,20 +1,20 @@
 # MAVEN
-Standalone java app: JAR fine
-Web app: WAR fine
-But as we know is we use thymeleaf, it does use JAR file, even if it is a web application. It uses HTML, and all the tags Spring internally handle.
-
+Standalone java app: JAR file  
+Web app: WAR file  
+But as we know is we use thymeleaf, it does use JAR file, even if it is a web application. 
+It uses HTML, and all the tags Spring internally handle.
 
 Archetypes: like as template. Stand-alone, webapp, ear etc
 
 Build, dependency management tool
 
 PLugins:
-a. compiler plugin
-b. surefire plugin for unit test
-c. wsimport: generate stub from  a web services 
+a. compiler plugin  
+b. surefire plugin for unit test  
+c. wsimport: generate Stub from a web services   
 
-Set maven: M2_HOME=PATH_TO_MAVEN
-add %PATH_TO_MAVEN%/bin to "path"
+Set maven: M2_HOME=PATH_TO_MAVEN  
+add %PATH_TO_MAVEN%/bin to "path"  
 
 config/settings.xml: config file where we can customize the behaviour of maven
 
@@ -27,10 +27,10 @@ mvn archetype:generate -DgroupId=com.abc -DartifactId=hello-maven -DarchetypeArt
 ```
 
 
-mvn clean insall 
-and then to run 
-java -jer <jar>
-or java -jer <jar>  com.anc.className
+mvn clean insall   
+and then to run   
+java -jer <jar>  
+or java -jer <jar>  com.anc.className  
 
 
 Plugins and Goals: A maven plugin is a collection of one or more goals. clean, install etc are the goals.
