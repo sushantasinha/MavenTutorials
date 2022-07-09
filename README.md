@@ -8,7 +8,7 @@ Archetypes: like as template. Stand-alone, webapp, ear etc
 
 Build, dependency management tool
 
-PLugins:
+Plugins:  
 a. compiler plugin  
 b. surefire plugin for unit test  
 c. wsimport: generate Stub from a web services   
@@ -27,7 +27,7 @@ mvn archetype:generate -DgroupId=com.abc -DartifactId=hello-maven -DarchetypeArt
 ```
 
 
-mvn clean insall   
+mvn clean install   
 and then to run   
 java -jer <jar>  
 or java -jer <jar>  com.anc.className  
@@ -41,8 +41,8 @@ mvn archetype:generate -DgroupId=com.abc -DartifactId=hello-maven -DarchetypeArt
 ```
 install goal from install plugin
 
-BY default maven does not know, how to create project, package it etc... it uses "compiler" etc to get the work done. Every maven project gets a default set 
-of plugins from its parent., but we can override then by defining them in our pom file.
+BY default maven does not know, how to create project, package it etc... it uses "compiler" etc to get the work done. 
+Every maven project gets a default set of plugins from its parent., but we can override then by defining them in our pom file.
 
 
 
@@ -93,38 +93,40 @@ Each phases are associated with 1 or more goals. there can be multiple goals ass
     
 mvn test === mvn surefire:test
     
-If it is standalone java project, maven will be associated with jar:jar; if it is web project then maven dunamically associated with war:war goal
+If it is standalone java project, maven will be associated with jar:jar; if it is web project then maven dunamically 
+associated with war:war goal
 
 
 Maven Lifecycle:
-clean
-validate
-compile
-test
-package
-verify
-install
-site
-deploy
+clean  
+validate    
+compile  
+test  
+package  
+verify  
+install  
+site  
+deploy  
 
 
 
 groupId:artifactId:packaging:version: uniquely identified where we can find an artifact in maven repository
-groupId: java package, it is the reverse the url of company like org.oracle. Cna incl sub package
-artifactId; artifact name (this will be the jar name ete)
-version
-packaging: jar/war
+
+<b>groupId:</b> java package, it is the reverse the url of company like org.oracle. Can incl sub package
+<b>artifactId:</b> artifact name (this will be the jar name ete)
+<b>version</b>
+<b>packaging:</b> jar/war
 
 
 default mavn repository: http://repo.maven.apache.org/maven2
 This is the location maven build is output the location for me
-If the jar is nt available is central repository (http://repo.maven.apache.org/maven2), we can look for enterprise level repository (org level repository)
-Maven create a local repository on developers m/c so everytime it will not pull them from central ir enterprise repo. This is under .me (user directory/.m2)
+If the jar is not available is central repository (http://repo.maven.apache.org/maven2), we can look for enterprise level repository 
+(org level repository) Maven create a local repository on developers m/c so everytime it will not pull them from 
+central ir enterprise repo. This is under .m2 (user directory/.m2)
 
-every pom is derived for  super pom. This as well. (pom.xml -> right click -> effective pom)
+every pom is derived for super pom. This as well. (pom.xml -> right click -> effective pom)
 
 ```
-
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -178,10 +180,12 @@ mvn clean install -DskipTests
 ```
 
 Below will limit the dependency, to the test; and will not add it while source code is compiled
+```
 <scope>test</scope>
+```
 
-provided scope: generally for web application.This means it will not be added while creating war etc... this will be there for compile time when needed but during 
-runtime, this will not be included as tomcat etc already have this dependency.
+provided scope: generally for web application.This means it will not be added while creating war etc... 
+this will be there for compile time when needed but during runtime, this will not be included as tomcat etc already have this dependency.
 
 
 Add parent child project
@@ -238,10 +242,10 @@ Scopes:
 6. import: used for pom based, not for jar or war 
 
 
-In parent pom, if we add this, it will actually denotes, we will not needed to add the <version> for junit whereever we add it in parent and child pom
-So, this will ensure, we are using same junit version throughout all the parent and child projects. 
+In parent pom, if we add this, it will actually denotes, we will not needed to add the "version" for junit wherever we add it in parent 
+and child pom. So, this will ensure, we are using same junit version throughout all the parent and child projects. 
 Still if we define the junit version in child amd/or parent project under <dependencies>, it will override the managed version which is mentioned 
-under <dependencyManagement>
+under "dependencyManagement"
 
 ```
 <dependencyManagement>
