@@ -29,8 +29,8 @@ mvn archetype:generate -DgroupId=com.abc -DartifactId=hello-maven -DarchetypeArt
 
 mvn clean install   
 and then to run   
-java -jer <jar>  
-or java -jer <jar>  com.anc.className  
+java -jar <jar>  
+or java -jar <jar>  com.anc.className  
 
 
 Plugins and Goals: A maven plugin is a collection of one or more goals. clean, install etc are the goals.
